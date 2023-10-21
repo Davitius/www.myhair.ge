@@ -7,14 +7,8 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
+                <div class="col-sm-6 mx-auto text-center">
                     <h1 class="m-0">პერსონალი</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{route('UserProfile')}}">ოფისი</a></li>
-                        <li class="breadcrumb-item">პერსონალი</li>
-                    </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -38,9 +32,9 @@
 
 
             {{--=================== თანამშრომლის დამატება ========================================--}}
-            <li class="list-group-item">
-                <b>პერსონალის პარამეტრები</b>
-            </li>
+{{--            <li class="list-group-item">--}}
+{{--                <b>პერსონალის პარამეტრები</b>--}}
+{{--            </li>--}}
             {{--=================== Staff Search ==========================--}}
             <li class="list-group-item mb-3">
                 <div class="row pb-3">
@@ -57,9 +51,9 @@
                                     </div>
                                 @else
                                     <div class="alert alert-danger p-1 text-center">
-                                        <label class="" style="font-weight: normal">თქვენ იმყოფებით დასვენების
+                                        <label class="" style="font-weight: bold">თქვენ იმყოფებით დასვენების
                                             რეჟიმზე!</label>
-                                        <label class="" style="font-weight: normal">დასვენების რეჟიმის დროს ადგილის
+                                        <label class="" style="font-weight: normal; font-size: 80%">დასვენების რეჟიმის დროს თქვენთან ვიზიტის
                                             დაჯავშნა
                                             შეუძლებელია!</label>
                                     </div>
@@ -94,7 +88,7 @@
 
                     <div class="col-md-6 pb-3 card">
                         <div class="card-header">
-                            <h3 class="card-title">თქვენი სპეციალობა: {{ Auth::user()->role }}</h3>
+                            <h3 class="card-title">თქვენი სპეციალობა:</h3>
                         </div>
                         <br>
                         <!-- /.card-header -->
@@ -103,13 +97,17 @@
                             @csrf
                             @method('patch')
                             <div class="btn-group w-100">
-                                <select class="form-control" name="spec" id="spec">
+                                <select class="form-control font-weight-bold" name="spec" id="spec">
+                                    @if(Auth::user()->role != '')
                                     <option class="" value="{{ Auth::user()->role }}">{{ Auth::user()->role }}</option>
+                                    @else
+                                        <option class="" value="">აირჩიეთ სპეციალობა.</option>
+                                    @endif
                                 @foreach($specs as $spec)
                                         <option class="" value="{{ $spec->spec }}">{{ $spec->spec }}</option>
                                     @endforeach
                                 </select>
-                                <button class="btn btn-outline-success" type="submit">შეცვლა</button>
+                                <button class="btn btn-outline-info" type="submit">შეცვლა</button>
                             </div>
                         </form>
                     </div>
@@ -154,12 +152,12 @@
                                             <form action="{{ route('Staff.AbilityDelete', $ba->id) }}"
                                                   method="post">
                                                 @csrf
-                                                <button class="btn btn-default"
+                                                <button class="btn btn-outline-danger"
                                                         onclick="return confirm('ნამდვილად გებნებავთ მომსახურების პრეისკურანტიდან ამოშლა?')"
                                                         title="წაშლა" type="submit">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="20"
                                                          height="20"
-                                                         fill="red"
+                                                         fill="currentColor"
                                                          class="bi bi-trash3-fill" viewBox="0 0 16 16">
                                                         <path
                                                             d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
@@ -203,7 +201,7 @@
                                 <tbody>
                                 <tr>
                                     <td>
-                                        <input type="text" class="form-control" id="service" name="service">
+                                        <input type="text" class="form-control" id="service" name="service" maxlength="40">
                                     </td>
                                     <td>
                                         <div class="btn-group">
@@ -230,7 +228,7 @@
                                                style="width: 70px" type="number">
                                     </td>
                                     <td>
-                                        <button class="btn btn-outline-success" title="პრისკურანტში დამატება"
+                                        <button class="btn btn-outline-info" title="პრისკურანტში დამატება"
                                                 type="submit">
                                             დამატება
                                         </button>
@@ -251,7 +249,7 @@
             {{--============================= Barber Foto Galery =====================================--}}
             <section class="col-lg-12 mb-5 mx-auto">
                 {{--=====  დასახელება =====--}}
-                <li class="list-group-item">
+                <li class="list-group-item text-center">
                     <b>ჩემი ვარცხნილობები</b>
                     <br>
                     <a class="" style="font-size: 80%" href="https://www.img2go.com/crop-image" target="_blank">ფოტო

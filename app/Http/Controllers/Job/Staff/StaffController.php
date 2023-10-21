@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Job\Staff;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Ability;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,8 +15,8 @@ class StaffController extends Controller
     public function index()
     {
         $role = Auth::user()->role;
-        $userspecs = DB::table('roles')->where('role', $role)->get();
-        $BarbAbils = DB::table('abilities')->where('barber_id', Auth::user()->id)->get();
+        $userspecs = Role::where('role', $role)->get();
+        $BarbAbils = Ability::where('barber_id', Auth::user()->id)->get();
 
         $specs = DB::table('categories')->orderBy('spec')->get();
 

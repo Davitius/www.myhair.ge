@@ -13,7 +13,7 @@ class SpeceditController extends Controller
 {
     public function edit($id)
     {
-        $Categories = DB::table('categories')->where('id', $id)->get();
+        $Categories = Category::where('id', $id)->get();
 
         return view('AdminPanel.Categories.editspec', compact('Categories'));
     }

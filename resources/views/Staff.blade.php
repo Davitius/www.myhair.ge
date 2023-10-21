@@ -253,7 +253,9 @@
                     <div class="card-header">
                         <h4 class="GeoArtText">სპეციალისტი არ მუშაობს.</h4>
                     </div>
-                    <img class="posterImg" src="{{asset('img/vakation.jpg')}}">
+                    <div class="w-100 d-flex justify-content-center">
+                    <img class="posterImg mt-5" src="{{asset('img/vakation.jpg')}}">
+                    </div>
                 </div>
             </section>
         @endif
@@ -312,7 +314,7 @@
         <div class="container">
             @if(Auth::user())
                 <h2>კომენტარები</h2>
-                <p class="text-muted mb-5">შეაფასე სტილისტი და დატოვე კომენტარი</p>
+                <p class="text-muted mb-5">შეაფასე სპეციალისტი და დატოვე კომენტარი</p>
                 @if(isset($check['0']))
                     @foreach($check as $checks)
                         <div class="col-md-6 mx-auto text-center">

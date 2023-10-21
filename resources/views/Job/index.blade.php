@@ -7,14 +7,8 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
+                <div class="col-sm-6 mx-auto text-center">
                     <h1 class="m-0">სტატუსი</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{route('UserProfile')}}">ოფისი</a></li>
-                        <li class="breadcrumb-item">სტატუსი</li>
-                    </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -74,7 +68,7 @@
                             <label for="customRadio3" class="custom-control-label">სალონის მფლობელი.</label>
                         </div>
                         <div class="text-center mt-2">
-                            <button class="btn btn-outline-warning" type="submit">სტატუსის შესცვლა</button>
+                            <button class="btn btn-outline-info" type="submit">სტატუსის შესცვლა</button>
                         </div>
                     </li>
                 </div>
@@ -168,7 +162,7 @@
                                         <label class="staffcode">{{Auth::user()->staffcode}}</label>
                                         <div class="mt-2">
                                             @if($salonName != '')
-                                                <button class="btn btn-warning" id="myBtn">სალონის პერსონალის
+                                                <button class="btn btn-outline-danger" id="myBtn">სალონის პერსონალის
                                                     სიიდან ამოშლა
                                                 </button>
 
@@ -200,7 +194,7 @@
                                                                 @method('patch')
                                                                 <button type="submit"
                                                                         class="btn btn-danger"
-                                                                        title="სალონის წაშლა">
+                                                                        title="პერსონალის სიიდან ამოშლა">
                                                                     წაშალე
                                                                 </button>
                                                             </form>
@@ -213,7 +207,7 @@
                                                     method="post">
                                                     @csrf
                                                     @method('patch')
-                                                    <button class="btn btn-outline-warning"
+                                                    <button class="btn btn-outline-info"
                                                             title="Staffcode-ის დაგენერირება"
                                                             type="submit">
                                                         ახალი კოდის დაგენერირება

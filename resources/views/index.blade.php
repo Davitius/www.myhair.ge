@@ -5,7 +5,9 @@
             <div class="col-md-6">
                 <h1 class="mb-3">www.myhair.ge</h1>
                 <p class="text-dark">მარტივი გზა სილამაზისკენ</p>
-                <a class="btn btn-primary mb-4" href="{{route('MainRegister', 'x')}}"> > > > </a>
+                @if(!Auth::user())
+                <a class="btn btn-primary mb-4" href="{{route('MainLogin', 'x')}}"> > > > </a>
+                @endif
             </div>
             <div class="col-md-6">
                 <img src="{{asset('img/Logo.png')}}" alt="app" width="388px" class="img-fluid">

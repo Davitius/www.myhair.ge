@@ -16,7 +16,7 @@ class AbilitiesController extends Controller
     {
 //        dd('yoo');
         $data = $request->validated();
-        $add = DB::table('abilities')->where('service', $data['service'])->where('barber_id', Auth::user()->id)->get();
+        $add = Ability::where('service', $data['service'])->where('barber_id', Auth::user()->id)->get();
         $Flag = count($add);
         if ($Flag == 0) {
             $data['barber_id'] = Auth::user()->id;

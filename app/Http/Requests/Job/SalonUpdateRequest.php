@@ -54,9 +54,8 @@ class SalonUpdateRequest extends FormRequest
             'longitude.min' => 'არასწორე კოორდინატის ფორმაა.',
             'longitude.max' => 'არასწორე კოორდინატის ფორმაა.',
 
-            'photo.mimes' => 'ფოტო უნდა იყოს ერთ-ერთი ფორმატი: Jpg; Jpeg; Png; Bmp.',
+            'photo.mimes' => 'ფოტო უნდა იყოს ერთ-ერთი ფორმატი: JPG; JPEG; PNG; BMP.',
             'photo.max' => 'სალონის ფოტო არ უნდა აღემატებოდეს 512 კილობაიტს.',
-            'photo.dimensions' => 'სურათი უნდა იყოს 5:3 პროპორციით.',
 
         ];
     }

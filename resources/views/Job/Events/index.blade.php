@@ -5,14 +5,8 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
+                <div class="col-sm-6 mx-auto text-center">
                     <h1 class="m-0">დაჯავშნული ვიზიტები</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{route('UserProfile')}}">პროფილი</a></li>
-                        <li class="breadcrumb-item">ჯავშნები</li>
-                    </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -32,7 +26,7 @@
                     <p class="">აქტიური ჯავშნები</p>
                 </div>
                 <div class="">
-                    <p class="" style="font-size: 200%">{{$Data['CountActiveRes']}}</p>
+                    <p class="" style="font-size: 250%; font-weight: bold; color: #6610f2;">{{$Data['CountActiveRes']}}</p>
                 </div>
             </div>
 
@@ -41,7 +35,7 @@
                     <p class="">დასრულებული ჯავშნები</p>
                 </div>
                 <div class="">
-                    <p class="" style="font-size: 200%">{{$Data['CountReservs']}}</p>
+                    <p class="" style="font-size: 250%; font-weight: bold; color: #6610f2;">{{$Data['CountReservs']}}</p>
                 </div>
             </div>
 
@@ -64,7 +58,7 @@
                                 <th>საათი</th>
                             </tr>
                             <tr>
-                                <td style="font-size: 150%">{{floor($sumWorktime/1000/60/60)}}</td>
+                                <td style="font-size: 150%; font-weight: bold; color: #6610f2;">{{floor($sumWorktime/1000/60/60)}}</td>
                             </tr>
                         </table>
                     </div>
@@ -75,7 +69,7 @@
                                 <th>წუთი</th>
                             </tr>
                             <tr>
-                                <td style="font-size: 150%">{{($sumWorktime/1000/60)%60}}</td>
+                                <td style="font-size: 150%; font-weight: bold; color: #6610f2;">{{($sumWorktime/1000/60)%60}}</td>
                             </tr>
                         </table>
 
@@ -100,7 +94,7 @@
                             <table class="table table-hover text-nowrap">
                                 <thead>
                                 <tr>
-{{--                                    <th>ID</th>--}}
+                                    <th>ID</th>
                                     <th>თარიღი</th>
                                     <th>საათი</th>
                                     <th>მომხმარებელი</th>
@@ -114,13 +108,13 @@
                                 @foreach($Data['ActiveRes'] as $res)
                                     <tbody>
                                     <tr>
-{{--                                        <td>{{$res->id}}</td>--}}
+                                        <td>{{$res->id}}</td>
                                         <td>{{$res->startdate}}</td>
                                         <td>{{$res->starthour}}</td>
                                         <td>
                                             <form method="post" action="{{route('ClientInfo', $res->user_id)}}">
                                                 @csrf
-                                                <button type="submit" class="btn btn-default">{{$res->title}}</button>
+                                                <button type="submit" class="btn btn-outline-info" style="font-size: 90%">{{$res->title}}</button>
                                             </form>
                                         </td>
                                         <td style="font-size: 80%">{{$res->service}}</td>
@@ -128,7 +122,7 @@
                                             @if($res->status == 'waiting')
                                                 <button id="" class="btn btn-default"
                                                         title="ჯავშანი მიღებულია, გელოდებით">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                          fill="#0b5ed7" class="bi bi-hourglass-split"
                                                          viewBox="0 0 16 16">
                                                         <path
@@ -138,7 +132,7 @@
                                             @endif
                                             @if($res->status == 'done')
                                                 <button id="" class="btn btn-default" title="შესრულებულია">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                          fill="green" class="bi bi-check-circle" viewBox="0 0 16 16">
                                                         <path
                                                             d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -149,7 +143,7 @@
                                             @endif
                                             @if($res->status == 'reject')
                                                 <button id="" class="btn btn-default" title="უარყოფილია">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                          fill="red" class="bi bi-x-circle" viewBox="0 0 16 16">
                                                         <path
                                                             d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -179,9 +173,9 @@
                                                         <option class="" style="color: red" value="reject">უარყოფა
                                                         </option>
                                                     </select>
-                                                    <button id="" onclick="return confirm('ნამდვილად გნებავს ჯავშნის სტატუსის შეცვლა?')" class="btn btn-outline-success" title="შეცვლა">
+                                                    <button id="" onclick="return confirm('ნამდვილად გნებავს ჯავშნის სტატუსის შეცვლა?')" class="btn btn-outline-info" title="შეცვლა">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                             fill="navy" class="bi bi-arrow-return-left"
+                                                             fill="currentColor" class="bi bi-arrow-return-left"
                                                              viewBox="0 0 16 16">
                                                             <path fill-rule="evenodd"
                                                                   d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
@@ -244,7 +238,7 @@
                                             <form method="post" action="{{route('ClientInfo', $reserv->user_id)}}">
                                                 @csrf
                                                 <button type="submit"
-                                                        class="btn btn-default">{{$reserv->title}}</button>
+                                                        class="btn btn-outline-info" style="font-size: 90%">{{$reserv->title}}</button>
                                             </form>
                                         </td>
                                         <td style="font-size: 80%">{{$reserv->service}}</td>
@@ -252,7 +246,7 @@
                                             @if($reserv->status == 'waiting')
                                                 <button id="" class="btn btn-default"
                                                         title="ჯავშანი მიღებულია, გელოდებით">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                          fill="#0b5ed7" class="bi bi-hourglass-split"
                                                          viewBox="0 0 16 16">
                                                         <path
@@ -262,7 +256,7 @@
                                             @endif
                                             @if($reserv->status == 'done')
                                                 <button id="" class="btn btn-default" title="შესრულებულია">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                          fill="green" class="bi bi-check-circle" viewBox="0 0 16 16">
                                                         <path
                                                             d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -273,7 +267,7 @@
                                             @endif
                                             @if($reserv->status == 'reject')
                                                 <button id="" class="btn btn-default" title="უარყოფილია">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                          fill="red" class="bi bi-x-circle" viewBox="0 0 16 16">
                                                         <path
                                                             d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>

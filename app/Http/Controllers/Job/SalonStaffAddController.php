@@ -15,7 +15,7 @@ class SalonStaffAddController extends Controller
     {
 
         $user = User::find($id);
-        $sal_id = DB::table('salons')->where('user_id', Auth::user()->id)->first();
+        $sal_id = Salon::where('user_id', Auth::user()->id)->first();
         $data = ['sal_id' => $sal_id->id, 'staffstatus' => 'Staff', 'saladdtime' => date_create()];
 
         $user->update($data);

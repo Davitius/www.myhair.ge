@@ -6,14 +6,8 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
+                <div class="col-sm-6 mx-auto text-center">
                     <h1 class="m-0">სილამაზის სალონი</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{route('UserProfile')}}">ოფისი</a></li>
-                        <li class="breadcrumb-item">სილამაზის სალონი</li>
-                    </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -57,12 +51,12 @@
                                         <input type="text" name="staffcode" id="staffcode"
                                                class="form-control w-75"
                                                placeholder="პერსონალის კოდი">
-                                        <button type="submit" class="btn btn-default">
+                                        <button type="submit" class="btn btn-outline-info">
                                             <i class="fas fa-search"></i>
                                         </button>
                                     </form>
                                     <a href="{{route('Job.Beautysalon')}}">
-                                        <button class="btn btn-default">
+                                        <button class="btn btn-outline-info">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                  fill="currentColor" class="bi bi-arrow-clockwise"
                                                  viewBox="0 0 16 16">
@@ -105,12 +99,12 @@
                                                                 @csrf
                                                                 @method('patch')
                                                                 <input type="text" name="salid" value="96" hidden>
-                                                                <button class="btn btn-light" type="submit"
+                                                                <button class="btn btn-outline-info" type="submit"
                                                                         title="პერსონალის დამატება">
                                                                     <svg xmlns="http://www.w3.org/2000/svg"
                                                                          width="20"
                                                                          height="20"
-                                                                         fill="green"
+                                                                         fill="currentColor"
                                                                          class="bi bi-person-plus-fill"
                                                                          viewBox="0 0 16 16">
                                                                         <path
@@ -149,7 +143,7 @@
                 <li class="list-group-item">
                     <b>სალონის პერსონალი</b>
                 </li>
-                <li class="list-group-item">
+                <li class="list-group-item mb-3">
                     <div class="col-12">
                         <div class="card">
                             <!-- /.card-header -->
@@ -175,10 +169,10 @@
                                                 <td>{{ $staff->staffstatus }}</td>
                                                 <td>
                                                     <a href="{{ route('Job.StaffEdit', $staff->id) }}">
-                                                        <button class="btn btn-default" title="რედაქტირება">
+                                                        <button class="btn btn-outline-info" title="რედაქტირება">
                                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                                  width="20" height="20"
-                                                                 fill="orange" class="bi bi-pencil-fill"
+                                                                 fill="currentColor" class="bi bi-pencil-fill"
                                                                  viewBox="0 0 16 16">
                                                                 <path
                                                                     d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
@@ -207,8 +201,8 @@
                 <li class="list-group-item d-flex justify-content-between">
                         <a class="" href="{{route('Salon', $salon->id)}}"><h3>{{ $salon->name }}</h3></a>
 
-                    <button id="myBtn" title="სალონის წაშლა" class="btn btn-default">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="red"
+                    <button id="myBtn" title="სალონის წაშლა" class="btn btn-outline-danger">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                              class="bi bi-trash3-fill" viewBox="0 0 16 16">
                             <path
                                 d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
@@ -249,7 +243,7 @@
                                 <div class="card-header">
                                     <h3 class="card-title"></h3>
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">დევიზი:</label>
+                                        <label for="exampleInputEmail1">დევიზი</label>
                                         <input type="text" class="form-control" name="motto" id="motto"
                                                placeholder="" value="{{ $salon->motto }}">
                                     </div>
@@ -260,7 +254,7 @@
                                 <div class="card-header">
                                     <h3 class="card-title"></h3>
                                     <div class="form-group">
-                                        <label>ტელეფონი:</label><label class="RequiredStar">*</label>
+                                        <label>ტელეფონი</label><label class="RequiredStar">*</label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                                 <span class="input-group-text"><i
@@ -277,7 +271,7 @@
                                 <div class="card-header">
                                     <h3 class="card-title"></h3>
                                     <div class="form-group">
-                                        <label for="firstname">მისამართი:</label><label
+                                        <label for="firstname">მისამართი</label><label
                                             class="RequiredStar">*</label>
                                         <input type="text" class="form-control" name="address"
                                                id="address"
@@ -318,14 +312,14 @@
                                             <div class="card-body">
                                                 <div class="form-group">
                                                     <label class="" style="font-weight: normal">გრძედი
-                                                        (latitude):</label>
+                                                        (latitude)</label>
                                                     <input class="form-control" type="text" id="latitude"
                                                            name="latitude" value="{{$salon->latitude}}"
                                                            placeholder="xx,xxxxxx">
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="" style="font-weight: normal">განედი
-                                                        (longitude):</label>
+                                                        (longitude)</label>
                                                     <input class="form-control" type="text" id="longitude"
                                                            name="longitude" value="{{$salon->longitude}}"
                                                            placeholder="xx,xxxxxx">
@@ -343,7 +337,7 @@
                                 <div class="row">
                                     <div class="col-lg-7">
                                         <div class="card-body">
-                                            <label for="exampleInputFile">ფოტო:</label>
+                                            <label for="exampleInputFile">ფოტო</label>
                                             @if($salon->photo != '')
                                                 <img class="" src="../../storage/{{$salon->photo}}"
                                                      alt="Salon picture"
@@ -358,8 +352,6 @@
                                     <div class="col-lg-5 d-flex align-items-center justify-content-center">
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <label for="exampleInputFile">ფოტო:</label>
-
                                                 <div class="input-group">
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input" name="photo"
@@ -374,12 +366,88 @@
                                     </div>
                                 </div>
 
-                                {{--===== სამუშაო დღეები/საათები =====--}}
+                                {{--===== სამუშაო დღეები/საათები/სერვისი =====--}}
                                 <div class="card-header">
                                     <h3 class="card-title"></h3>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
+                                        {{--===== სერვისი =====--}}
+                                            <h3 class="card-title"></h3>
+                                            <div class="row p-4">
+                                                <div class="col-md-12">
+                                                    <label class="">სერვისი</label>
+                                                    <br>
+                                                    <!-- checkbox -->
+                                                    <div class="form-group">
+                                                        @php
+                                                            $services = [
+                                                                ['id' => 11, 'label' => 'თმის შეჭრა, შეღებვა, ვარცხნილობა'],
+                                                                ['id' => 12, 'label' => 'წვერის გაპარსვა'],
+                                                                ['id' => 13, 'label' => 'მაკიაჟი'],
+                                                                ['id' => 14, 'label' => 'მანიკური'],
+                                                                ['id' => 15, 'label' => 'პედიკური'],
+                                                                ['id' => 16, 'label' => 'წარბები და წამწამები'],
+                                                                ['id' => 17, 'label' => 'სადღესასწაულო მაკიაჟი, ვარცხნილობა'],
+                                                                ['id' => 18, 'label' => 'ტატუირება'],
+                                                                ['id' => 19, 'label' => 'სპა'],
+                                                                ['id' => 20, 'label' => 'ეპილაცია'],
+                                                                ['id' => 21, 'label' => 'სოლარიუმი'],
+                                                                ['id' => 22, 'label' => 'კანის მოვლა']
+                                                            ];
+                                                        @endphp
+
+                                                        @foreach($services as $key => $service)
+                                                            <div class="custom-control custom-checkbox">
+                                                                <input class="custom-control-input" type="checkbox"
+                                                                       id="customCheckbox{{ $service['id'] }}"
+                                                                       name="{{ $service['id'] }}"
+                                                                       value="{{ $service['label'] }}"
+                                                                       @if($checkService[$key] != '') checked @endif>
+                                                                <label for="customCheckbox{{ $service['id'] }}"
+                                                                       class="custom-control-label"
+                                                                       style="font-weight: normal">{{ $service['label'] }}</label>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="card-body">
+                                            <label class="">სამუშაო საათები</label>
+                                            <br>
+                                            <div class="row">
+
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="firstname"
+                                                           style="font-weight: normal">დაწყება (am)</label>
+                                                    <select class="form-control" name="work_sh"
+                                                            id="work_sh">
+                                                        <option value="{{ $salon->work_sh }}"
+                                                                class="">{{ $salon->work_sh }}</option>
+                                                        @for($ts2=7; $ts2<=12; $ts2++)
+                                                            <option value="{{$ts2}}" class="">{{$ts2}}</option>
+                                                        @endfor
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="firstname"
+                                                           style="font-weight: normal">დამთავრება (pm)</label>
+                                                    <select class="form-control" name="work_fh"
+                                                            id="work_fh">
+                                                        <option value="{{ $salon->work_fh }}"
+                                                                class="">{{ $salon->work_fh }}</option>
+                                                        @for($tf2=16; $tf2<=22; $tf2++)
+                                                            <option value="{{$tf2}}" class="">{{$tf2}}</option>
+                                                        @endfor
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
                                         <div class="card-body">
                                             <label class="">სამუშაო დღეები</label>
                                             <br>
@@ -444,84 +512,6 @@
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="card-body">
-                                            <label class="">სამუშაო საათები</label>
-                                            <br>
-                                            <div class="row">
-
-                                                <div class="col-md-6">
-                                                    <label for="firstname"
-                                                           style="font-weight: normal">დაწყება (am)</label>
-                                                    <select class="form-control" name="work_sh"
-                                                            id="work_sh">
-                                                        <option value="{{ $salon->work_sh }}"
-                                                                class="">{{ $salon->work_sh }}</option>
-                                                        @for($ts2=7; $ts2<=12; $ts2++)
-                                                            <option value="{{$ts2}}" class="">{{$ts2}}</option>
-                                                        @endfor
-                                                    </select>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <label for="firstname"
-                                                           style="font-weight: normal">დამთავრება (pm)</label>
-                                                    <select class="form-control" name="work_fh"
-                                                            id="work_fh">
-                                                        <option value="{{ $salon->work_fh }}"
-                                                                class="">{{ $salon->work_fh }}</option>
-                                                        @for($tf2=16; $tf2<=22; $tf2++)
-                                                            <option value="{{$tf2}}" class="">{{$tf2}}</option>
-                                                        @endfor
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                {{--===== სერვისი =====--}}
-                                <div class="card-header">
-                                    <h3 class="card-title"></h3>
-                                    <div class="row p-4">
-                                        <div class="col-md-6">
-                                            <label class="">სერვისი</label>
-                                            <br>
-                                            <!-- checkbox -->
-                                            <div class="form-group">
-                                                @php
-                                                    $services = [
-                                                        ['id' => 11, 'label' => 'თმის შეჭრა, შეღებვა, ვარცხნილობა'],
-                                                        ['id' => 12, 'label' => 'წვერის გაპარსვა'],
-                                                        ['id' => 13, 'label' => 'მაკიაჟი'],
-                                                        ['id' => 14, 'label' => 'მანიკური'],
-                                                        ['id' => 15, 'label' => 'პედიკური'],
-                                                        ['id' => 16, 'label' => 'წარბები და წამწამები'],
-                                                        ['id' => 17, 'label' => 'სადღესასწაულო მაკიაჟი, ვარცხნილობა'],
-                                                        ['id' => 18, 'label' => 'ტატუირება'],
-                                                        ['id' => 19, 'label' => 'სპა'],
-                                                        ['id' => 20, 'label' => 'ეპილაცია'],
-                                                        ['id' => 21, 'label' => 'სოლარიუმი'],
-                                                        ['id' => 22, 'label' => 'კანის მოვლა']
-                                                    ];
-                                                @endphp
-
-                                                @foreach($services as $key => $service)
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input class="custom-control-input" type="checkbox"
-                                                               id="customCheckbox{{ $service['id'] }}"
-                                                               name="{{ $service['id'] }}"
-                                                               value="{{ $service['label'] }}"
-                                                               @if($checkService[$key] != '') checked @endif>
-                                                        <label for="customCheckbox{{ $service['id'] }}"
-                                                               class="custom-control-label"
-                                                               style="font-weight: normal">{{ $service['label'] }}</label>
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
 
                                 {{--=====  ღილაკი "შეცვლა" =====--}}
@@ -530,7 +520,7 @@
                                 </div>
                                 <div class="card-body d-flex justify-content-center">
                                     <button type="submit" onclick="return confirm('ნამდვილად გნებავს შეცვლა?')"
-                                            class="btn btn-outline-primary">შეცვლა
+                                            class="btn btn-outline-info">შეცვლა
                                     </button>
                                 </div>
                                 <div class="card-body table-responsive p-0">
@@ -570,7 +560,7 @@
                                         <div class="card-header">
                                             <h3 class="card-title"></h3>
                                             <div class="form-group FotoFrame">
-                                                <label for="exampleInputFile">ფოტო №{{$z}}:</label>
+                                                <label for="exampleInputFile">ფოტო №{{$z}}</label>
                                                 <div class="input-group w-100">
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input" name="{{$Photo}}"
@@ -596,7 +586,7 @@
                                     <div class="card-header">
                                         <h3 class="card-title"></h3>
                                         <div class="card-body d-flex justify-content-center">
-                                            <button type="submit" class="btn btn-outline-primary">ატვირთე</button>
+                                            <button type="submit" class="btn btn-outline-info">ატვირთე</button>
                                         </div>
                                     </div>
                                     <div class="card-body table-responsive p-0">
@@ -623,7 +613,7 @@
                         @endif
 
                         {{--=====  დასახელება =====--}}
-                        <li class="list-group-item">
+                        <li class="list-group-item text-center">
                             <b>სალონის შექმნა</b>
                         </li>
                         <form method="post" action="{{ route('Job.BeautysalonCreate') }}"
@@ -638,7 +628,7 @@
                                         <div class="card-header">
                                             <h3 class="card-title"></h3>
                                             <div class="form-group">
-                                                <label for="firstname">სალონის დასახელება:</label><label
+                                                <label for="firstname">სალონის დასახელება</label><label
                                                     class="RequiredStar">*</label>
                                                 <input type="text" class="form-control" name="name" id="name"
                                                        placeholder="" value="{{ old('name') }}">
@@ -649,7 +639,7 @@
                                         <div class="card-header">
                                             <h3 class="card-title"></h3>
                                             <div class="form-group">
-                                                <label for="exampleInputEmail1">დევიზი:</label>
+                                                <label for="exampleInputEmail1">დევიზი</label>
                                                 <input type="text" class="form-control" name="motto" id="motto"
                                                        placeholder="" value="{{ old('motto') }}">
                                             </div>
@@ -659,7 +649,7 @@
                                         <div class="card-header">
                                             <h3 class="card-title"></h3>
                                             <div class="form-group">
-                                                <label>ტელეფონი:</label><label class="RequiredStar">*</label>
+                                                <label>ტელეფონი</label><label class="RequiredStar">*</label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i
@@ -677,7 +667,7 @@
                                         <div class="card-header">
                                             <h3 class="card-title"></h3>
                                             <div class="form-group">
-                                                <label for="firstname">მისამართი:</label><label
+                                                <label for="firstname">მისამართი</label><label
                                                     class="RequiredStar">*</label>
                                                 <input type="text" class="form-control" name="address" id="address"
                                                        placeholder="" value="{{ old('address') }}">
@@ -686,7 +676,7 @@
 
                                         {{--=====  ლოკაცია =====--}}
                                         <div class="card-body">
-                                            <label for="firstname">ლოკაცია:</label><label class="RequiredStar">*</label>
+                                            <label for="firstname">ლოკაცია</label><label class="RequiredStar">*</label>
                                             <select class="form-control" name="location"
                                                     id="location">
                                                 <option value="{{ old('location') }}">{{ old('location') }}</option>
@@ -699,14 +689,14 @@
 
                                         {{--=====  Googlemap =====--}}
                                         <div class="card-header">
-                                            <label for="exampleInputFile">Google კოორდინატები.</label>
+                                            <label for="exampleInputFile">Google კოორდინატები</label>
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <div class="card-body">
 
                                                         <div class="form-group">
                                                             <label class="" style="font-weight: normal">გრძედი
-                                                                (latitude):</label>
+                                                                (latitude)</label>
                                                             <input class="form-control" type="text" id="latitude"
                                                                    name="latitude" placeholder="xx,xxxxxx"
                                                                    value="{{old('latitude')}}">
@@ -718,7 +708,7 @@
                                                     <div class="card-body">
                                                         <div class="form-group">
                                                             <label class="" style="font-weight: normal">განედი
-                                                                (longitude):</label>
+                                                                (longitude)</label>
                                                             <input class="form-control" type="text" id="longitude"
                                                                    name="longitude" placeholder="xx,xxxxxx"
                                                                    value="{{old('longitude')}}">
@@ -733,7 +723,7 @@
                                         <div class="card-header">
                                             <h3 class="card-title"></h3>
                                             <div class="form-group">
-                                                <label for="exampleInputFile">ფოტო:</label>
+                                                <label for="exampleInputFile">ფოტო</label>
                                                 <div class="input-group">
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input" name="photo"
@@ -745,11 +735,94 @@
                                             </div>
                                         </div>
 
-                                        {{--===== სამუშაო დღეები/საათები =====--}}
+
+                                        {{--===== სამუშაო დღეები/საათები/სერვისი =====--}}
                                         <div class="card-header">
                                             <h3 class="card-title"></h3>
                                             <div class="row p-4">
+
+
                                                 <div class="col-lg-6">
+                                                    {{--===== სერვისი =====--}}
+                                                            <div class="col-sm-12">
+                                                                <label class="">სერვისი</label>
+                                                                <br>
+                                                                <!-- checkbox -->
+                                                                <div class="form-group">
+                                                                    @php
+                                                                        $services = [
+                                                                            ['id' => 11, 'label' => 'თმის შეჭრა, შეღებვა, ვარცხნილობა'],
+                                                                            ['id' => 12, 'label' => 'წვერის გაპარსვა'],
+                                                                            ['id' => 13, 'label' => 'მაკიაჟი'],
+                                                                            ['id' => 14, 'label' => 'მანიკური'],
+                                                                            ['id' => 15, 'label' => 'პედიკური'],
+                                                                            ['id' => 16, 'label' => 'წარბები და წამწამები'],
+                                                                            ['id' => 17, 'label' => 'სადღესასწაულო მაკიაჟი, ვარცხნილობა'],
+                                                                            ['id' => 18, 'label' => 'ტატუირება'],
+                                                                            ['id' => 19, 'label' => 'სპა'],
+                                                                            ['id' => 20, 'label' => 'ეპილაცია'],
+                                                                            ['id' => 21, 'label' => 'სოლარიუმი'],
+                                                                            ['id' => 22, 'label' => 'კანის მოვლა']
+                                                                        ];
+                                                                    @endphp
+
+                                                                    @foreach($services as $key => $service)
+                                                                        <div class="custom-control custom-checkbox">
+                                                                            <input class="custom-control-input" type="checkbox"
+                                                                                   id="customCheckbox{{ $service['id'] }}"
+                                                                                   name="{{ $service['id'] }}"
+                                                                                   value="{{ $service['label'] }}">
+                                                                            <label for="customCheckbox{{ $service['id'] }}"
+                                                                                   class="custom-control-label"
+                                                                                   style="font-weight: normal">{{ $service['label'] }}</label>
+                                                                        </div>
+                                                                    @endforeach
+                                                                </div>
+                                                            </div>
+                                                </div>
+
+
+                                                <div class="col-lg-3">
+                                                    <label class="">სამუშაო საათები</label>
+                                                    <br>
+                                                    <div class="row">
+
+                                                        <div class="col-lg-12 mb-3 pr-5">
+                                                            <label for="firstname"
+                                                                   style="font-weight: normal">დაწყება
+                                                                (am)</label><label
+                                                                class="RequiredStar">*</label>
+                                                            <br>
+
+                                                            <select class="form-control" name="work_sh"
+                                                                    id="work_sh">
+                                                                <option value="{{ old('work_sh') }}"
+                                                                        class="">{{ old('work_sh') }}</option>
+                                                                @for($ts1=7; $ts1<=12; $ts1++)
+                                                                    <option value="{{$ts1}}" class="">{{$ts1}}</option>
+                                                                @endfor
+                                                            </select>
+
+                                                        </div>
+
+                                                        <div class="col-lg-12 mb-3 pr-5">
+                                                            <label for="firstname"
+                                                                   style="font-weight: normal">დამთავრება
+                                                                (pm)</label><label
+                                                                class="RequiredStar">*</label>
+                                                            <select class="form-control" name="work_fh"
+                                                                    id="work_fh">
+                                                                <option value="{{ old('work_fh') }}"
+                                                                        class="">{{ old('work_fh') }}</option>
+                                                                @for($tf1=16; $tf1<=22; $tf1++)
+                                                                    <option value="{{$tf1}}" class="">{{$tf1}}</option>
+                                                                @endfor
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-3">
                                                     <label class="">სამუშაო დღეები</label>
                                                     <br>
                                                     <div class="col-sm-6">
@@ -814,99 +887,13 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-
-                                                <div class="col-lg-6">
-                                                    <label class="">სამუშაო საათები</label>
-                                                    <br>
-                                                    <div class="row">
-
-                                                        <div class="col-lg-6">
-                                                            <label for="firstname"
-                                                                   style="font-weight: normal">დაწყება
-                                                                (am)</label><label
-                                                                class="RequiredStar">*</label>
-                                                            <br>
-
-                                                            <select class="form-control" name="work_sh"
-                                                                    id="work_sh">
-                                                                <option value="{{ old('work_sh') }}"
-                                                                        class="">{{ old('work_sh') }}</option>
-                                                                @for($ts1=7; $ts1<=12; $ts1++)
-                                                                    <option value="{{$ts1}}" class="">{{$ts1}}</option>
-                                                                @endfor
-                                                            </select>
-
-                                                        </div>
-
-                                                        <div class="col-lg-6">
-                                                            <label for="firstname"
-                                                                   style="font-weight: normal">დამთავრება
-                                                                (pm)</label><label
-                                                                class="RequiredStar">*</label>
-                                                            <select class="form-control" name="work_fh"
-                                                                    id="work_fh">
-                                                                <option value="{{ old('work_fh') }}"
-                                                                        class="">{{ old('work_fh') }}</option>
-                                                                @for($tf1=16; $tf1<=22; $tf1++)
-                                                                    <option value="{{$tf1}}" class="">{{$tf1}}</option>
-                                                                @endfor
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
 
-
-                                        {{--===== სერვისი =====--}}
-                                        <div class="card-header">
-                                            <h3 class="card-title"></h3>
-                                            <div class="row p-4">
-                                                <div class="col-sm-6">
-                                                    <label class="">სერვისი</label>
-                                                    <br>
-                                                    <!-- checkbox -->
-
-
-                                                    <div class="form-group">
-                                                        @php
-                                                            $services = [
-                                                                ['id' => 11, 'label' => 'თმის შეჭრა, შეღებვა, ვარცხნილობა'],
-                                                                ['id' => 12, 'label' => 'წვერის გაპარსვა'],
-                                                                ['id' => 13, 'label' => 'მაკიაჟი'],
-                                                                ['id' => 14, 'label' => 'მანიკური'],
-                                                                ['id' => 15, 'label' => 'პედიკური'],
-                                                                ['id' => 16, 'label' => 'წარბები და წამწამები'],
-                                                                ['id' => 17, 'label' => 'სადღესასწაულო მაკიაჟი, ვარცხნილობა'],
-                                                                ['id' => 18, 'label' => 'ტატუირება'],
-                                                                ['id' => 19, 'label' => 'სპა'],
-                                                                ['id' => 20, 'label' => 'ეპილაცია'],
-                                                                ['id' => 21, 'label' => 'სოლარიუმი'],
-                                                                ['id' => 22, 'label' => 'კანის მოვლა']
-                                                            ];
-                                                        @endphp
-
-                                                        @foreach($services as $key => $service)
-                                                            <div class="custom-control custom-checkbox">
-                                                                <input class="custom-control-input" type="checkbox"
-                                                                       id="customCheckbox{{ $service['id'] }}"
-                                                                       name="{{ $service['id'] }}"
-                                                                       value="{{ $service['label'] }}">
-                                                                <label for="customCheckbox{{ $service['id'] }}"
-                                                                       class="custom-control-label"
-                                                                       style="font-weight: normal">{{ $service['label'] }}</label>
-                                                            </div>
-                                                        @endforeach
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
+                                        
                                         {{--=====  ღილაკები =====--}}
                                         <div class="card-body d-flex justify-content-center">
-                                            <button type="submit" onclick="return confirm('შევქმნა სალონი?')" class="btn btn-primary">შექმნა</button>
+                                            <button type="submit" onclick="return confirm('შევქმნა სალონი?')" class="btn btn-info">შექმნა</button>
                                         </div>
                                         <div class="card-body table-responsive p-0">
                                         </div>

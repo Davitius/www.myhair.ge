@@ -13,9 +13,9 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $Staffs = DB::table('users')->where('sal_id', '!=', 'null')->paginate(10);
-        $ActiveAllStaffs = DB::table('users')->where('sal_id', '!=', 'null')->where('status', 'Active')->get();
-        $ActiveStaffs = DB::table('users')->where('staffstatus', 'Staff')->where('status', 'Active')->get();
+        $Staffs = User::where('sal_id', '!=', 'null')->paginate(10);
+        $ActiveAllStaffs = User::where('sal_id', '!=', 'null')->where('status', 'Active')->get();
+        $ActiveStaffs = User::where('staffstatus', 'Staff')->where('status', 'Active')->get();
 
         $all = count($ActiveAllStaffs);
         $Staff = count($ActiveStaffs);
@@ -28,8 +28,8 @@ class IndexController extends Controller
 
     public function search(Request $request)
     {
-        $ActiveAllStaffs = DB::table('users')->where('sal_id', '!=', 'null')->where('status', 'Active')->get();
-        $ActiveStaffs = DB::table('users')->where('staffstatus', 'Staff')->where('status', 'Active')->get();
+        $ActiveAllStaffs = User::where('sal_id', '!=', 'null')->where('status', 'Active')->get();
+        $ActiveStaffs = User::where('staffstatus', 'Staff')->where('status', 'Active')->get();
 
         $all = count($ActiveAllStaffs);
         $Staff = count($ActiveStaffs);
@@ -45,7 +45,7 @@ class IndexController extends Controller
 
     public function edit($id)
     {
-        $Staffs = DB::table('users')->where('id', $id)->get();
+        $Staffs = User::where('id', $id)->get();
 
         return view('AdminPanel.Staffs.edit', compact('Staffs'));
     }

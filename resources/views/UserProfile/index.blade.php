@@ -6,14 +6,8 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">პირადი ინფორმაცია</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{route('UserProfile')}}">პროფილი</a></li>
-                        <li class="breadcrumb-item">პირადი ინფორმაცია</li>
-                    </ol>
+                <div class="col-sm-6 mx-auto text-center">
+{{--                    <h1 class="m-0">პირადი ინფორმაცია</h1>--}}
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -26,88 +20,71 @@
 
 @section('body')
     <!-- Small boxes (Stat box) -->
-    <div class="row">
+    <div class="d-flex justify-content-center flex-wrap">
         <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-info">
+            <div class="small-box bg-gradient-lightblue">
                 <div class="inner">
                     <h3>{{$Stats['CountActiveRes']}}</h3>
 
                     <p>ჩემი ჯავშნები</p>
                 </div>
                 <div class="icon">
-                    <i class="ion ion-bag"></i>
+                    <i class="ion ion-calendar"></i>
                 </div>
             </div>
         </div>
         <!-- ./col -->
 
-        @if((Auth::user()->staffstatus == 'Staff') || (Auth::user()->staffstatus == 'Manager'))
-        <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-                <div class="inner">
-                    <h3>{{$Stats['CountMyActiveEvents']}}<sup style="font-size: 20px"></sup></h3>
 
-                    <p>კლიენტის დაჯავშნული ვიზიტი</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-stats-bars"></i>
+        @if(Auth::user()->access == 'Staff' || Auth::user()->access == 'Manager')
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-gradient-lightblue">
+                    <div class="inner">
+                        <h3>{{$Stats['CountMyActiveEvents']}}<sup style="font-size: 20px"></sup></h3>
+
+                        <p>კლიენტის ჯავშნები</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>
                 </div>
             </div>
-        </div>
         @endif
 
-        @if(Auth::user()->staffstatus == '')
-        <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-                <div class="inner">
-                    <h3>{{$Stats['CountReservs']}}<sup style="font-size: 20px"></sup></h3>
+        @if(Auth::user()->access == 'Manager' && $Stats['CountSalonEvents'] != 'noSalon')
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-gradient-lightblue">
+                    <div class="inner">
+                        <h3>{{$Stats['CountSalonEvents']}}</h3>
 
-                    <p>დასრულებული ჯავშნები</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-stats-bars"></i>
+                        <p>სალონის ჯავშნები</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
                 </div>
             </div>
-        </div>
-    @endif
-
-
-        <!-- ./col -->
-        <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-                <div class="inner">
-                    <h3>{{$feedbacks}}</h3>
-
-                    <p>კომენტარები</p>
-                </div>
-                <div class="icon">
-                    <i class="far fa-comments"></i>
-                </div>
-            </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-                <div class="inner">
-                    <h3>{{$Stats['Rating']}}</h3>
-
-                    <p>რეიტინგი</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-heart"></i>
-                </div>
-            </div>
-        </div>
-        <!-- ./col -->
+            <!-- ./col -->
+        @endif
     </div>
     <!-- /.row -->
 
 
+
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mt-4">
+                <div class="col-sm-6 mx-auto text-center">
+                    <h1 class="m-0">{{Auth::user()->firstname}} {{Auth::user()->lastname}}</h1>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
 
 
 
@@ -127,7 +104,29 @@
                     @endif
                 </div>
 
-                <p class="text-muted text-center">{{$user->access}}</p>
+{{--                <p class="text-muted text-center">{{$user->access}}</p>--}}
+
+            <div class="BestRating1 mb-3">
+                <div class="text-center mx-auto SalonRatingDiv" style="color: gold; font-size: 120%">
+                    <?php $a = 0; $b = 0.7; ?>
+                    @for($s = 1; $s < 6; $s++)
+                        @if($user->rating <= $a)
+                            <i class="fa-regular fa-star" title="{{$user->rating}}"></i>
+                        @else
+                            @if ($user->rating > $a && $user->rating <= $b)
+                                <i class="fa-solid fa-star-half-stroke" title="{{$user->rating}}"></i>
+                            @endif
+                            @if ($user->rating > $b)
+                                <i class="fa-solid fa-star" title="{{$user->rating}}"></i>
+                            @endif
+                        @endif
+                        <?php $a += 1; $b += 1; ?>
+                    @endfor
+                </div>
+            </div>
+
+
+
             <div class="col-md-6 mx-auto">
                 @if($errors->any())
                     <div class="alert alert-danger" style="font-size: 80%">
@@ -148,7 +147,7 @@
                                 <label class="custom-file-label" for="exampleInputFile">აირჩიე ფოტო</label>
                             </div>
                             <div class="">
-                                <button type="submit" onclick="return confirm('განვაახლო თქვენი ავატარი?')" class="btn btn-outline-primary">ატვირთე</button>
+                                <button type="submit" onclick="return confirm('განვაახლო თქვენი ავატარი?')" class="btn btn-outline-info">ატვირთე</button>
                             </div>
                         </div>
                         <div class="text-center">
@@ -160,20 +159,17 @@
 
                 <div class="userinfocard mt-5">
                 <div class="card-body">
+                    <div class="d-flex justify-content-center mb-3">
+                        @if(Auth::user()->phone != '')
+                            <a href="{{ route('UserProfile.edit', Auth::user()->id) }}"
+                               class="btn btn-outline-info">განაახლე პირადი ინფორმაცია</a>
+                        @else
+                            <a href="{{ route('UserProfile.edit', Auth::user()->id) }}"
+                               class="btn btn-outline-info">შეავსე პირადი ინფორმაცია</a>
+                        @endif
+                    </div>
                     <table class="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th>პირადი ინფორმაცია</th>
-                            <th>@if(Auth::user()->phone != '')
-                                    <a href="{{ route('UserProfile.edit', Auth::user()->id) }}"
-                                       class="btn btn-outline-info">განაახლე</a>
-                                @else
-                                    <a href="{{ route('UserProfile.edit', Auth::user()->id) }}"
-                                       class="btn btn-outline-info">შეავსე</a>
-                                @endif</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+                        <tbody style="font-size: 90%">
                         <tr>
                             <td>ID:</td>
                             <td>{{$user->id}}</td>

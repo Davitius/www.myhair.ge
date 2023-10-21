@@ -25,7 +25,7 @@ class StaffCodeController extends Controller
 
     public function delete($id)
     {
-        $asd = DB::table('staff')->where('user_id', $id)->get();
+        $asd = Staff::where('user_id', $id)->get();
         foreach ($asd as $dsa)
             $staff = Staff::find($dsa->id);
         $staff->delete();
