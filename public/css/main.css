@@ -1,0 +1,692 @@
+@charset "UTF-8";
+* {
+  /*=============სქროლბარის დიზაინი================*/ }
+  * ::-webkit-scrollbar {
+    width: 10px; }
+  * ::-webkit-scrollbar-track {
+    background: violet;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2) inset;
+    border-radius: 5px; }
+  * ::-webkit-scrollbar-thumb {
+    background: #6206a8;
+    border-radius: 5px;
+    border: 1px solid #d4d4d4; }
+  * ::-webkit-scrollbar-thumb:hover {
+    background: #6206a8; }
+
+.WorkDays {
+  background-color: white;
+  margin: 0 10px 20px 10px;
+  border-radius: 10px;
+  overflow-x: hidden;
+  text-align: left;
+  padding: 15px;
+  /* რეიტინგის სტატისტიკა. */ }
+  .WorkDays .BFio {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 1em; }
+  .WorkDays .skills {
+    text-align: left; }
+    .WorkDays .skills i {
+      font-size: 50%;
+      color: gold; }
+    .WorkDays .skills .progress-bar {
+      background: white;
+      width: 100%;
+      height: 15px;
+      border-radius: 5px;
+      border: 1px solid gold;
+      text-align: left;
+      padding-right: 35px; }
+    .WorkDays .skills .progress-bar div {
+      height: 15px;
+      border-radius: 5px;
+      background: gold; }
+    .WorkDays .skills .progress-bar div span {
+      height: 40px;
+      width: 38px;
+      border-radius: 50%;
+      background: greenyellow;
+      float: right;
+      margin-top: -13px;
+      margin-right: -35px;
+      color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px; }
+  .WorkDays .GoldenFrames {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 1em;
+    margin-top: 1em; }
+    .WorkDays .GoldenFrames .salonGstar {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      height: 170px;
+      width: 8em;
+      border: 1px solid #ba6ef5;
+      box-shadow: 1px 9px 5px #ba6ef5;
+      margin-bottom: 20px; }
+      .WorkDays .GoldenFrames .salonGstar .Gstar {
+        width: 60%; }
+    .WorkDays .GoldenFrames .Salonrating {
+      font-size: 200%;
+      color: #f69945; }
+  .WorkDays .headertext {
+    display: block;
+    font-family: GeoArt;
+    text-align: center;
+    color: #6610f2;
+    font-weight: bold;
+    font-size: 200%;
+    font-size: 200%;
+    margin-bottom: 2em; }
+
+.headertext {
+  display: block;
+  font-family: GeoArt;
+  text-align: center;
+  color: #6610f2;
+  font-weight: bold;
+  font-size: 200%;
+  font-size: 200%;
+  margin-bottom: 2em; }
+
+/* უკუკავშირი. */
+.rating {
+  transform: rotateY(180deg);
+  display: flex;
+  background-color: #6206a8;
+  border-radius: 6px;
+  justify-content: center;
+  border: 2px solid #6206a8;
+  margin: 0 10px 20px 10px; }
+
+.rating input {
+  display: none; }
+
+.rating label {
+  padding-bottom: 10px;
+  display: block;
+  cursor: pointer;
+  width: 50px;
+  background-color: #6206a8; }
+
+.rating label:before {
+  content: '\f005';
+  font-family: fontAwesome;
+  position: relative;
+  display: block;
+  font-size: 35px;
+  color: white;
+  text-shadow: 0 9px 5px rgba(0, 0, 0, 0.5);
+  margin-right: 12px; }
+
+.rating label:after {
+  content: '\f005';
+  font-family: fontAwesome;
+  position: absolute;
+  display: block;
+  font-size: 35px;
+  color: yellow;
+  top: 0;
+  opacity: 0;
+  transition: 0.5s;
+  text-shadow: 0 9px 5px rgba(0, 0, 0, 0.5); }
+
+.rating label:hover:after,
+.rating label:hover ~ label:after,
+.rating input:checked ~ label:after {
+  opacity: 1; }
+
+.FeedbackCreate {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 10px 50px 10px;
+  min-height: 10em; }
+  .FeedbackCreate .FeedbackTitle {
+    background-color: lightskyblue; }
+  .FeedbackCreate .FeedbackText textarea {
+    font-size: 90%; }
+
+.Feedbacks {
+  background-color: white;
+  margin: 0 10px 20px 10px;
+  padding: 10px;
+  border-radius: 10px;
+  overflow-x: hidden;
+  text-align: left;
+  border: 3px solid #f0f69d;
+  box-shadow: 0 9px 5px rgba(0, 0, 0, 0.5); }
+  .Feedbacks textarea {
+    font-size: 90%; }
+  .Feedbacks .FR {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1em; }
+    .Feedbacks .FR i {
+      color: gold;
+      text-shadow: 0 9px 5px rgba(0, 0, 0, 0.5); }
+    .Feedbacks .FR .ratingstar {
+      width: 20px; }
+    .Feedbacks .FR .ratingvalue {
+      font-size: 100%;
+      color: orange;
+      margin-right: 1em; }
+  .Feedbacks .FI {
+    padding-left: 20px; }
+  .Feedbacks .FeedbackTextarea {
+    background-color: #d3f5f3; }
+
+.Feedbacks .row {
+  margin: 0 0 10px 0; }
+  .Feedbacks .row .col-lg-4 .rounded-circle {
+    width: 50px;
+    height: 50px;
+    object-fit: cover; }
+  .Feedbacks .row .col-lg-12 .created_at {
+    font-size: 80%; }
+.Feedbacks .FI1, .Feedbacks .FI2, .Feedbacks .FI3 {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 8px 0 0 8px; }
+.Feedbacks .FI2 {
+  border-radius: 0 0 0 0; }
+  .Feedbacks .FI2 .stars i {
+    color: gold;
+    text-shadow: 0 9px 5px rgba(0, 0, 0, 0.5); }
+.Feedbacks .FI3 {
+  border-radius: 0 8px 8px 0; }
+.Feedbacks .FI4 {
+  padding: 5px;
+  border: 2px solid lightblue;
+  border-radius: 8px;
+  width: 100%;
+  height: 5em;
+  overflow-y: scroll; }
+
+.abilities table {
+  width: 100%;
+  margin-top: 1em;
+  overflow-x: scroll;
+  margin-bottom: 3em; }
+  .abilities table tr input {
+    height: 20px;
+    color: darkviolet; }
+  .abilities table tr th {
+    text-align: center;
+    padding: 10px 0 10px 0;
+    font-size: 90%; }
+  .abilities table tr .check {
+    width: auto;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .abilities table tr .check input[type="checkbox"] {
+      position: relative;
+      width: 40px;
+      height: 20px;
+      -webkit-appearance: none;
+      background: #fa7d8c;
+      outline: none;
+      border-radius: 10px;
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2); }
+    .abilities table tr .check input:checked[type="checkbox"] {
+      background: #32f832; }
+    .abilities table tr .check input[type="checkbox"]:before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 10px;
+      top: 0;
+      left: 0;
+      background: #fff;
+      transform: scale(1.1);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: 0.5s;
+      border: 1px solid #7b9ffa; }
+    .abilities table tr .check input:checked[type="checkbox"]:before {
+      left: 20px; }
+  .abilities table tr .service {
+    padding: 0; }
+    .abilities table tr .service input {
+      width: 100%;
+      text-align: left; }
+  .abilities table tr .price {
+    text-align: center; }
+    .abilities table tr .price input {
+      width: 50px;
+      text-align: center; }
+  .abilities table tr .time {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .abilities table tr .time input {
+      width: 40px;
+      text-align: center; }
+  .abilities table tr td {
+    font-weight: bold; }
+
+#calendar .fc-today {
+  background: #d3f5f3; }
+#calendar .fc-day:hover {
+  background: #d3f5f3; }
+
+/* ფოტო გალერეა. */
+.BarberFlipster {
+  width: 100%;
+  height: 300px;
+  background: white;
+  overflow: hidden;
+  text-align: center;
+  color: navajowhite;
+  font-size: 200%;
+  font-weight: 400;
+  object-fit: cover; }
+  .BarberFlipster .carousel {
+    width: 300px;
+    margin: 50px auto 0;
+    overflow: visible; }
+
+.booksyForm input {
+  color: darkviolet;
+  font-weight: 600; }
+.booksyForm textarea {
+  color: darkviolet; }
+
+.posterImg {
+  width: 22em;
+  height: 22em;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid violet;
+  padding: 2px; }
+
+.posterImgsalon {
+  width: 100%;
+  height: 22em;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 3px solid violet;
+  padding: 2px; }
+
+.SalonRatingDiv i {
+  color: gold; }
+
+.booksyBtn {
+  height: 30px;
+  width: 120px;
+  background-color: whitesmoke;
+  color: forestgreen;
+  border: 2px solid forestgreen;
+  border-radius: 30px 0 30px 0;
+  margin-top: 5px; }
+
+.booksyBtn:hover {
+  background-color: forestgreen;
+  color: white; }
+
+.booksyBtn2 {
+  height: 30px;
+  width: 120px;
+  background-color: whitesmoke;
+  color: darkred;
+  border: 2px solid darkred;
+  border-radius: 30px 0 30px 0;
+  margin-top: 5px; }
+
+.booksyBtn2:hover {
+  background-color: darkred;
+  color: white; }
+
+#map {
+  background-color: white;
+  margin: 0 10px 20px 10px;
+  border-radius: 10px;
+  overflow-x: hidden;
+  text-align: left;
+  padding: 15px;
+  /* რეიტინგის სტატისტიკა. */
+  border: 1px solid #ba6ef5;
+  box-shadow: 1px 9px 5px #ba6ef5;
+  height: 680px; }
+  #map .BFio {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 1em; }
+  #map .skills {
+    text-align: left; }
+    #map .skills i {
+      font-size: 50%;
+      color: gold; }
+    #map .skills .progress-bar {
+      background: white;
+      width: 100%;
+      height: 15px;
+      border-radius: 5px;
+      border: 1px solid gold;
+      text-align: left;
+      padding-right: 35px; }
+    #map .skills .progress-bar div {
+      height: 15px;
+      border-radius: 5px;
+      background: gold; }
+    #map .skills .progress-bar div span {
+      height: 40px;
+      width: 38px;
+      border-radius: 50%;
+      background: greenyellow;
+      float: right;
+      margin-top: -13px;
+      margin-right: -35px;
+      color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px; }
+  #map .GoldenFrames {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 1em;
+    margin-top: 1em; }
+    #map .GoldenFrames .salonGstar {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      height: 170px;
+      width: 8em;
+      border: 1px solid #ba6ef5;
+      box-shadow: 1px 9px 5px #ba6ef5;
+      margin-bottom: 20px; }
+      #map .GoldenFrames .salonGstar .Gstar {
+        width: 60%; }
+    #map .GoldenFrames .Salonrating {
+      font-size: 200%;
+      color: #f69945; }
+  #map .headertext {
+    display: block;
+    font-family: GeoArt;
+    text-align: center;
+    color: #6610f2;
+    font-weight: bold;
+    font-size: 200%;
+    font-size: 200%;
+    margin-bottom: 2em; }
+
+.workdaysHeader {
+  display: flex;
+  justify-content: space-between; }
+
+.violetBoldFrame {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  border: 10px solid #ba6ef5; }
+
+.lightVioletFrame {
+  background-color: white;
+  margin: 0 10px 20px 10px;
+  border-radius: 10px;
+  overflow-x: hidden;
+  text-align: left;
+  padding: 15px;
+  /* რეიტინგის სტატისტიკა. */
+  border: 1px solid #ba6ef5;
+  box-shadow: 1px 9px 5px #ba6ef5; }
+  .lightVioletFrame .BFio {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 1em; }
+  .lightVioletFrame .skills {
+    text-align: left; }
+    .lightVioletFrame .skills i {
+      font-size: 50%;
+      color: gold; }
+    .lightVioletFrame .skills .progress-bar {
+      background: white;
+      width: 100%;
+      height: 15px;
+      border-radius: 5px;
+      border: 1px solid gold;
+      text-align: left;
+      padding-right: 35px; }
+    .lightVioletFrame .skills .progress-bar div {
+      height: 15px;
+      border-radius: 5px;
+      background: gold; }
+    .lightVioletFrame .skills .progress-bar div span {
+      height: 40px;
+      width: 38px;
+      border-radius: 50%;
+      background: greenyellow;
+      float: right;
+      margin-top: -13px;
+      margin-right: -35px;
+      color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px; }
+  .lightVioletFrame .GoldenFrames {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 1em;
+    margin-top: 1em; }
+    .lightVioletFrame .GoldenFrames .salonGstar {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      height: 170px;
+      width: 8em;
+      border: 1px solid #ba6ef5;
+      box-shadow: 1px 9px 5px #ba6ef5;
+      margin-bottom: 20px; }
+      .lightVioletFrame .GoldenFrames .salonGstar .Gstar {
+        width: 60%; }
+    .lightVioletFrame .GoldenFrames .Salonrating {
+      font-size: 200%;
+      color: #f69945; }
+  .lightVioletFrame .headertext {
+    display: block;
+    font-family: GeoArt;
+    text-align: center;
+    color: #6610f2;
+    font-weight: bold;
+    font-size: 200%;
+    font-size: 200%;
+    margin-bottom: 2em; }
+
+.GeoArtText {
+  text-align: center; }
+
+.space {
+  margin: 0 0 10em 0; }
+
+.salonposterimg {
+  width: 100%;
+  height: 220px;
+  border-radius: 4px;
+  object-fit: cover; }
+
+.related-post-thumbnail-wrapper:hover {
+  transform: translateY(-20px); }
+
+.city {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background: yellow;
+  background-image: none;
+  flex: 1;
+  padding: 0 .5em;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1em;
+  /*=============სქროლბარის დიზაინი================*/
+  text-align: center;
+  margin-bottom: 1em; }
+  .city ::-webkit-scrollbar {
+    width: 10px; }
+  .city ::-webkit-scrollbar-track {
+    background: violet;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2) inset;
+    border-radius: 5px; }
+  .city ::-webkit-scrollbar-thumb {
+    background: #6206a8;
+    border-radius: 5px;
+    border: 1px solid #d4d4d4; }
+  .city ::-webkit-scrollbar-thumb:hover {
+    background: #6206a8; }
+
+city::-ms-expand {
+  display: none; }
+
+.city {
+  position: relative;
+  display: flex;
+  width: 15em;
+  height: 3em;
+  line-height: 3;
+  background: #6206a8;
+  overflow: hidden;
+  border-radius: .25em; }
+
+.city::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: #6206a8;
+  cursor: pointer;
+  pointer-events: none;
+  transition: .25s all ease; }
+
+.city:hover::after {
+  color: #ba6ef5; }
+
+.GeoArtMotto {
+  display: block;
+  font-family: GeoArt;
+  text-align: center;
+  color: #6610f2;
+  font-weight: bold;
+  font-size: 200%;
+  font-size: 100%;
+  color: #6206a8;
+  font-weight: bold; }
+
+.searchCard {
+  border: 1px solid #ba6ef5;
+  box-shadow: 1px 9px 5px #ba6ef5;
+  padding: 7px;
+  border-radius: 6px; }
+
+.searchRating {
+  display: flex;
+  justify-content: center; }
+
+.paginBtns {
+  display: flex;
+  justify-content: center;
+  width: 100%; }
+
+/*  სალონის ბანერი შესასვლელ კარებში. */
+.openClose {
+  min-height: 25em; }
+  .openClose .trafaret {
+    width: 90%;
+    height: 23.5em;
+    border-radius: 10px;
+    padding: 1em;
+    border: 1px solid #ba6ef5;
+    box-shadow: 1px 9px 5px #ba6ef5;
+    overflow-y: scroll;
+    /*=============სქროლბარის დიზაინი================*/ }
+    .openClose .trafaret ::-webkit-scrollbar {
+      width: 10px; }
+    .openClose .trafaret ::-webkit-scrollbar-track {
+      background: violet;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.2) inset;
+      border-radius: 5px; }
+    .openClose .trafaret ::-webkit-scrollbar-thumb {
+      background: #6206a8;
+      border-radius: 5px;
+      border: 1px solid #d4d4d4; }
+    .openClose .trafaret ::-webkit-scrollbar-thumb:hover {
+      background: #6206a8; }
+    .openClose .trafaret .rivetDiv {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px; }
+      .openClose .trafaret .rivetDiv .rivet {
+        width: 1.5em;
+        height: 1.5em; }
+
+.staffPosterDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em; }
+  .staffPosterDiv .staffData {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+    color: #6610f2; }
+
+.purpleText {
+  color: purple;
+  margin-bottom: 0; }
+
+.salonStaffs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
+
+.card-headeri {
+  background-color: #6206a8;
+  padding: 15px;
+  color: white;
+  border-radius: 6px 6px 0 0; }
+
+.card-bodyy {
+  padding: 20px; }
+
+@media (min-width: 450px) {
+  .navbar-collapse {
+    justify-content: space-between; } }
+
+/*# sourceMappingURL=main.css.map */

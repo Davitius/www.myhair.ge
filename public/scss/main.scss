@@ -1,0 +1,387 @@
+@import "mixins";
+
+* {
+    @include scrollbar;
+}
+
+.WorkDays {
+    @include workdays;
+    @include headerText;
+}
+
+@include headerText;
+
+/* უკუკავშირი. */
+@include rating;
+.Feedbacks {
+    .row {
+        margin: 0 0 10px 0;
+
+        .col-lg-4 {
+            .rounded-circle {
+                width: 50px;
+                height: 50px;
+                object-fit: cover;
+            }
+        }
+
+        .col-lg-12 {
+            .created_at {
+                font-size: 80%;
+            }
+        }
+    }
+
+    .FI1, .FI2, .FI3 {
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-radius: 8px 0 0 8px;
+    }
+
+    .FI2 {
+        border-radius: 0 0 0 0;
+
+        .stars {
+            i {
+                color: gold;
+                text-shadow: 0 9px 5px rgba(0, 0, 0, .5);
+            }
+        }
+    }
+
+    .FI3 {
+        border-radius: 0 8px 8px 0;
+    }
+
+    .FI4 {
+        padding: 5px;
+        border: 2px solid lightblue;
+        border-radius: 8px;
+        width: 100%;
+        height: 5em;
+        overflow-y: scroll;
+    }
+}
+
+
+.abilities {
+    table {
+        width: 100%;
+        margin-top: 1em;
+        overflow-x: scroll;
+        margin-bottom: 3em;
+
+        tr {
+            input {
+                height: 20px;
+                color: darkviolet;
+            }
+
+            th {
+                text-align: center;
+                padding: 10px 0 10px 0;
+                font-size: 90%;
+            }
+
+            .check {
+                width: auto;
+                height: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                @include checkbox;
+            }
+
+            .service {
+                padding: 0;
+
+                input {
+                    width: 100%;
+                    text-align: left;
+                }
+            }
+
+            .price {
+                text-align: center;
+
+                input {
+                    width: 50px;
+                    text-align: center;
+                }
+            }
+
+            .time {
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                input {
+                    width: 40px;
+                    text-align: center;
+                }
+            }
+
+            td {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+
+#calendar {
+    .fc-today {
+        background: #d3f5f3;
+    }
+
+    .fc-day:hover {
+        background: #d3f5f3;
+    }
+}
+
+
+/* ფოტო გალერეა. */
+.BarberFlipster {
+    width: 100%;
+    height: 300px;
+    background: white;
+    overflow: hidden;
+    text-align: center;
+    color: navajowhite;
+    font-size: 200%;
+    font-weight: 400;
+    object-fit: cover;
+
+    .carousel {
+        width: 300px;
+        margin: 50px auto 0;
+        overflow: visible;
+
+        img {
+            //-webkit-box-reflect: below 20px linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
+        }
+    }
+}
+
+
+.booksyForm {
+    input {
+        color: darkviolet;
+        font-weight: 600;
+    }
+
+    textarea {
+        color: darkviolet;
+    }
+}
+
+
+.posterImg {
+    width: 22em;
+    height: 22em;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid violet;
+    padding: 2px;
+}
+
+.posterImgsalon {
+    width: 100%;
+    height: 22em;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 3px solid violet;
+    padding: 2px;
+}
+
+.SalonRatingDiv {
+    i {
+        color: gold;
+    }
+}
+
+.booksyBtn {
+    height: 30px;
+    width: 120px;
+    background-color: whitesmoke;
+    color: forestgreen;
+    border: 2px solid forestgreen;
+    border-radius: 30px 0 30px 0;
+    margin-top: 5px;
+}
+
+.booksyBtn:hover {
+    background-color: forestgreen;
+    color: white;
+}
+
+.booksyBtn2 {
+    height: 30px;
+    width: 120px;
+    background-color: whitesmoke;
+    color: darkred;
+    border: 2px solid darkred;
+    border-radius: 30px 0 30px 0;
+    margin-top: 5px;
+}
+
+.booksyBtn2:hover {
+    background-color: darkred;
+    color: white;
+}
+
+
+#map {
+    @include workdays;
+    @include lightVioletFrame;
+    height: 680px;
+    @include headerText;
+}
+
+.workdaysHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
+.violetBoldFrame {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    border: 10px solid #ba6ef5;
+}
+
+.lightVioletFrame {
+    @include workdays;
+    @include lightVioletFrame;
+    @include headerText;
+}
+
+.GeoArtText {
+    text-align: center;
+}
+
+.space {
+    margin: 0 0 10em 0;
+}
+
+.salonposterimg {
+    width: 100%;
+    height: 220px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.related-post-thumbnail-wrapper:hover {
+    transform: translateY(-20px);
+}
+
+@include City;
+
+.GeoArtMotto {
+    display: block;
+    @include geoarttext;
+    font-size: 100%;
+    color: #6206a8;
+    font-weight: bold;
+}
+
+.searchCard {
+    @include lightVioletFrame;
+    padding: 7px;
+    border-radius: 6px;
+}
+
+.searchRating {
+    display: flex;
+    justify-content: center;
+}
+
+.paginBtns {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/*  სალონის ბანერი შესასვლელ კარებში. */
+.openClose {
+    min-height: 25em;
+
+    .trafaret {
+        width: 90%;
+        height: 23.5em;
+        border-radius: 10px;
+        padding: 1em;
+        @include lightVioletFrame;
+        overflow-y: scroll;
+        @include scrollbar;
+
+        .rivetDiv {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+
+            .rivet {
+                width: 1.5em;
+                height: 1.5em;
+            }
+        }
+    }
+}
+
+.staffPosterDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+
+    .staffData {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2em;
+        color: #6610f2;
+    }
+}
+
+.purpleText {
+    color: purple;
+    margin-bottom: 0;
+}
+
+.salonStaffs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.card-headeri {
+    background-color: #6206a8;
+    padding: 15px;
+    color: white;
+    border-radius: 6px 6px 0 0;
+}
+.card-bodyy {
+    padding: 20px;
+
+}
+
+
+
+
+
+// ***** Media *****
+
+//Up to mobil resolution
+@media (min-width: 450px) {
+    .navbar-collapse {
+        justify-content: space-between;
+    }
+}
+

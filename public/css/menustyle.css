@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/xss?family=Poppins:100,200,300,400,500,600,700,800,900');
+
+.navigation {
+    width: 400px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border-radius: 10px;
+    margin-right: 3em;
+}
+.navigation ul {
+    position: relative;
+    display: flex;
+    width: 350px;
+}
+.navigation ul li {
+    position: relative;
+    list-style: none;
+    width: 170px;
+    height: 70px;
+    z-index: 1;
+}
+.navigation ul li a {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+}
+.navigation ul li a .icon {
+    position: relative;
+    display: block;
+    font-size: 1.5em;
+    line-height: 75px;
+    transition: 0.5s;
+    color: #6610f2;
+    transform: translateY(-8px);
+}
+.navigation ul li:hover a .icon {
+    color: violet;
+}
+.navigation ul li.active a .icon {
+    color: violet;
+}
+.navigation ul li a .text {
+    position: absolute;
+    font-weight: 600;
+    font-size: 0.7em;
+    color: #222327;
+    transition: 0.5s;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transform: translateY(13px);
+}
+.navigation ul li.active a .text {
+    opacity: 1;
+
+}
+
+.indicator {
+    position: absolute;
+    width: 100px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+.indicator::before {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    height: 18px;
+    background: violet;
+    border-radius: 10px;
+}
+.indicator::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    width: 7.5px;
+    height: 7.5px;
+    border-radius: 50%;
+    background: #333;
+    box-shadow: 0 0 0 2px violet,
+    50px 50px violet,
+        40px 0 violet,
+        0 40px violet;
+    transform:  rotate(45deg);
+    animation: animate 2s ease-in-out infinite;
+}
+@keyframes animate {
+    0%,100% {
+        transform: rotate(35deg);
+    }
+    50% {
+        transform: rotate(55deg);
+    }
+}
+.navigation ul li:nth-child(2).active ~ .indicator {
+    transform: translateX(calc(105px * 1));
+}
+.navigation ul li:nth-child(3).active ~ .indicator {
+    transform: translateX(calc(105px * 2));
+}
+
+
