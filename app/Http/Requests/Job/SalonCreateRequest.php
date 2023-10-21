@@ -32,7 +32,7 @@ class SalonCreateRequest extends FormRequest
             'location' => 'required',
             'latitude' => ['sometimes'],
             'longitude' => ['sometimes'],
-            'photo' => ['image', 'sometimes', 'mimes:jpg,bmp,png,jpeg'],
+            'photo' => 'image|sometimes|mimes:jpg,bmp,png,jpeg|max:512',
             'work_sh' => 'required',
             'work_fh' => 'required',
         ];
@@ -61,7 +61,7 @@ class SalonCreateRequest extends FormRequest
             'address.required' => 'მისამართი - შევსება სავალდებულოა.',
             'address.max' => 'მისამართი არ უნდა აღემატებოდეს 55 სიმბოლოს.',
 
-            'photo.mimes' => 'ფოტო უნდა იყოს ერთ-ერთი ფორმატი: Jpg; Jpeg; Png; Bmp.',
+            'photo.mimes' => 'ფოტო უნდა იყოს ერთ-ერთი ფორმატი: JPG; JPEG; PNG; BMP.',
             'photo.size' => 'ფოტო არ უნდა აღემატებოდეს 512 კილობაიტს.',
 
             'work_sh.required' => 'აირჩიეთ სამუშაოს დაწყების დრო.',

@@ -1,3 +1,33 @@
+<?php
+$dateToday = date(today());
+$result = explode('-', $dateToday);
+$explodedd = explode(' ', $result[2]);
+$d = $explodedd[0];
+$m = $result[1];
+$y = $result[0];
+$Tuday = $d . '.' . $m . '.' . $y;
+if(Auth::user())
+{
+    $ActiveRes = \App\Models\Event::where('user_id', Auth::user()->id)->where('finished', 'falce')->orderBy('start', 'ASC')->get();
+    $CountActiveRes = count($ActiveRes);
+}else
+{
+    $CountActiveRes = 0;
+}
+if(Auth::user() && (Auth::user()->access == 'Staff' || Auth::user()->access == 'Manager'))
+    {
+        $clientsTuday = \App\Models\Event::where('barber_id', Auth::user()->id)->where('startdate', $Tuday)->get();
+        $countClientsTuday = count($clientsTuday);
+    }
+if(Auth::user() && Auth::user()->access == 'Manager')
+{
+    $salon = \App\Models\Salon::where('user_id', Auth::user()->id)->first();
+        if(isset($salon->name)){
+            $salonClientsTuday = \App\Models\Event::where('salon', $salon->name)->where('startdate', $Tuday)->get();
+            $salonCountClientsTuday = count($salonClientsTuday);
+        }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -131,6 +161,30 @@ if (!isset($menu)) {
                                     <a class="dropdown-item" href="{{route('AdminPanel')}}">ადმინ-პანელი</a>
                                 @endcan
                                 <a class="dropdown-item" href="{{route('UserProfile')}}">პირადი კაბინეტი</a>
+                                    @if(isset($CountActiveRes))
+                                        <a class="dropdown-item" href="{{route('Reservations')}}"><span class="" style="font-size: 75%">
+                                           ჩემი აქტიური ჯავშნები:
+                                        </span>
+                                            <span class="" style="margin-left: 10px; color: #6610f2; font-weight: bold; font-size: 90%">
+                                            {{$CountActiveRes}}
+                                        </span></a>
+                                    @endif
+                                    @if(isset($countClientsTuday))
+                                    <a class="dropdown-item" href="{{route('Reservations')}}"><span class="" style="font-size: 75%">
+                                            ჩემი კლიენტები დღეს:
+                                        </span>
+                                        <span class="" style="margin-left: 10px; color: #6610f2; font-weight: bold; font-size: 90%">
+                                            {{$countClientsTuday}}
+                                        </span></a>
+                                    @endif
+                                    @if(isset($salonCountClientsTuday))
+                                        <a class="dropdown-item" href="{{route('Reservations')}}"><span class="" style="font-size: 75%">
+                                            სალონში ჩაწერილი დღეს:
+                                        </span>
+                                            <span class="" style="margin-left: 10px; color: #6610f2; font-weight: bold; font-size: 90%">
+                                            {{$salonCountClientsTuday}}
+                                        </span></a>
+                                    @endif
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

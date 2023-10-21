@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\SocialAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,16 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
+
+Route::get('/auth/social-auth', [SocialAuthController::class, 'index'])->name('social-auth');
+Route::get('/auth/google/redirect', [SocialAuthController::class, 'googleRedirect'])->name('googleRedirect');
+Route::get('/auth/google/callback', [SocialAuthController::class, 'googleCallback'])->name('googleCallback');
+//Route::get('/testPage', function () {
+//    return view('testPage');
+//})->name('testPage');
+
+
+
 Route::get('/MenuSearch', 'Main\MenuSearchController@search')->name('menusearch');
 Route::get('/search', 'Main\SearchController@search')->name('search');
 Route::get('/contact', 'Main\ContactController@index')->name('Contact');
@@ -30,7 +41,6 @@ Route::get('/{lang}', 'Main\LangCookieController@create')->name('/lang');
 Route::get('/{asdl}/login', 'Main\MainLoginController@index')->name('MainLogin');
 Route::get('/{asdr}/register', 'Main\MainRegisterController@index')->name('MainRegister');
 Route::get('/Salon/{SsalonId}', 'SalonController@index')->name('Salon');
-Route::get('/Manual', 'Manual\ManualController@index')->name('Manual');
 Route::get('/Staff/{_staffid}/{massId}', 'StaffController@index')->name('SalonStaff');
 
 
@@ -77,6 +87,9 @@ Route::group(['', 'middleware' => 'admin'], function () {
 
 
 Route::group(['', 'middleware' => 'verified'], function () {
+
+    Route::get('/Manual/lessons', 'Manual\ManualController@index')->name('Manual');
+
     Route::get('/UserProfile/index', 'UserProfileController@index')->name('UserProfile');
     Route::get('/UserProfile/{UserProfile}/edit', 'UserProfileController@edit')->name('UserProfile.edit');
     Route::patch('/UserProfile/{UserProfile}', 'UserProfileController@update')->name('UserProfile.update');
@@ -135,6 +148,7 @@ Route::group(['', 'middleware' => 'verified'], function () {
 //სალონის რეიტინგი იუზერებისთვის
     Route::post('/Salon/Salfeedbacks/add{salfeedbacksid}', 'SalfeedbacksController@create')->name('Salfeedbacksadd');
     Route::post('/Salon/Salfeedbacks/Delete{salfeedbid}', 'SalonController@delete')->name('Salfeedbacks.delete');
+
 
 });
 

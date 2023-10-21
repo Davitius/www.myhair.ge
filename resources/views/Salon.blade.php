@@ -84,15 +84,15 @@
             <h2>ჩვენი პერსონალი</h2>
             <p class="text-muted">დაჯავშნე ვიზიტი სპეციალისტთან და მიიღე მაღალი ხარისხის მომსახურება.</p>
             <div class="row violetBoldFrame pt-5">
-                <div class="salonStaffs col-12 mb-3">
+                <div class="salonStaffs col-12 mb-3 d-flex flex-wrap justify-content-around">
                     @foreach($Staffs as $staff)
-                        <div class="col-md-3 mb-5">
+                        <div class="col-md-2 mb-5">
                             <div class="team-member-card col-12">
                                 @if($staff->photo != '')
-                                    <img class="team-member-avatar" alt="პერსონალის ფოტო"
+                                    <img class="team-member-avatar mb-1" alt="პერსონალის ფოტო"
                                          src="../../storage/{{$staff->photo}}">
                                 @else
-                                    <img class="team-member-avatar" alt="პერსონალის ფოტო"
+                                    <img class="team-member-avatar mb-1" alt="პერსონალის ფოტო"
                                          src="{{asset('img/barberdefault.jpg')}}">
                                 @endif
 
@@ -154,7 +154,8 @@
                                     @endif
 
                                 </div>
-                                <h6 class="mb-0" style="font-size: 90%">{{$staff->firstname}} {{$staff->lastname}}</h6>
+                                <h6 class="mb-0" style="font-size: 90%">{{$staff->firstname}}</h6>
+                                <h6 class="mb-0" style="font-size: 90%">{{$staff->lastname}}</h6>
                                 <div class="" style="height: 40px">
                                     <p class="team-member-designation">{{$staff->role}}</p>
                                 </div>
@@ -175,9 +176,9 @@
                         </div>
                     @endforeach
                 </div>
-                <div class="paginBtns">
-                    <label class="">{{ $Staffs->appends([])->links() }}</label>
-                </div>
+                {{--                <div class="paginBtns">--}}
+                {{--                    <label class="">{{ $Staffs->appends([])->links() }}</label>--}}
+                {{--                </div>--}}
             </div>
         </div>
     </section>
@@ -297,7 +298,7 @@
             <h2>კომენტარები</h2>
             <p class="text-muted mb-5">შეაფასე სალონი და დატოვე კომენტარი</p>
             @if(Auth::user())
-                @if(($Salon['id'] != $check2['sal_id']))
+                @if($Salon['id'] != Auth::user()->sal_id && $Salon['user_id'] != Auth::user()->id)
                     @if(isset($check['0']))
                         @foreach($check as $checks)
                             <div class="col-md-6 mx-auto text-center">
@@ -346,9 +347,10 @@
                                     </div>
                                 </div>
                             </div>
-
                         @endforeach
+
                     @else
+{{--                        კომენტარის დასატოვები ფორმა.--}}
                         <form action="{{route('Salfeedbacksadd', $Salon->id)}}" method="post">
                             @csrf
                             <div class="rating col-md-6 mx-auto">
@@ -384,6 +386,7 @@
                             </div>
                         </form>
                     @endif
+
                 @else
 
                 @endif
@@ -398,6 +401,20 @@
                     </ul>
                 </div>
             @endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <div class="container">
                 <div class="row" style="display: flex; justify-content: center">
                     @foreach($feedbacks as $feedback)

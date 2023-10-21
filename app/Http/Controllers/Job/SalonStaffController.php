@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Job;
 
 use App\Http\Controllers\Controller;
+use App\Models\Salon;
 use App\Models\Staff;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -13,8 +14,8 @@ class SalonStaffController extends Controller
 {
     public function create($id)
     {
-        $staff = DB::table('users')->where('id', $id)->first();
-        $salon = DB::table('salons')->where('user_id', Auth::user()->id)->first();
+        $staff = User::where('id', $id)->first();
+        $salon = Salon::where('user_id', Auth::user()->id)->first();
         $data = ['sal_id' => $salon->id, 'user_id' => $id, 'firstname' => $staff->firstname, 'lastname' => $staff->lastname, 'staffcode' => $staff->staffcode];
 
         Staff::Create($data);
@@ -25,7 +26,7 @@ class SalonStaffController extends Controller
 
     public function edit($id)
     {
-        $staff = DB::table('users')->where('id', $id)->get();
+        $staff = User::where('id', $id)->get();
 
         return view('Job.StaffEdit', compact('staff'));
     }

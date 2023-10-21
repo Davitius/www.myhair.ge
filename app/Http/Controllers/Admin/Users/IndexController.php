@@ -15,7 +15,7 @@ class IndexController extends Controller
     public function index()
     {
         $Users = User::orderBy('id', 'DESC')->paginate(10);
-        $ActiveUsers = DB::table('users')->where('status', 'Active')->get();
+        $ActiveUsers = User::where('status', 'Active')->get();
         $UserCount = User::orderBy('id', 'DESC')->get();
         $all = count($UserCount);
         $Active = count($ActiveUsers);
@@ -29,7 +29,7 @@ class IndexController extends Controller
     public function search(Request $request)
     {
         $UserCount = User::orderBy('id', 'DESC')->get();
-        $ActiveUsers = DB::table('salons')->where('status', 'Active')->get();
+        $ActiveUsers = Salon::where('status', 'Active')->get();
         $all = count($UserCount);
         $Active = count($ActiveUsers);
         $Disable = $all - $Active;
@@ -44,7 +44,7 @@ class IndexController extends Controller
 
     public function edit($id)
     {
-        $Users = DB::table('users')->where('id', $id)->get();
+        $Users = User::where('id', $id)->get();
 
         return view('AdminPanel.Users.edit', compact('Users'));
     }
@@ -64,7 +64,7 @@ class IndexController extends Controller
     public function delete($id)
     {
         $user = User::find($id);
-        $salon = DB::table('salons')->where('user_id', $id)->first();
+        $salon = Salon::where('user_id', $id)->first();
         if (isset($salon)) {
             $salonarry = Salon::find($salon->id);
             $AvatarFileName = $salon->photo;

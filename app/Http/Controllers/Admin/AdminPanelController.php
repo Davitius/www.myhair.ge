@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Citylist;
+use App\Models\Event;
+use App\Models\Feedback;
 use App\Models\Role;
 use App\Models\Salon;
 use App\Models\Staff;
@@ -20,16 +22,16 @@ class AdminPanelController extends Controller
         $id = Auth::user()->id;
         $feedbacks = DB::table('feedback')->where('barber_id', $id)->where('status', 'Active')->get();
 
-        $Five = DB::table('feedback')->where('status', 'Active')->where('star', '5')->where('barber_id', $id)->get();
-        $Four = DB::table('feedback')->where('status', 'Active')->where('star', '4')->where('barber_id', $id)->get();
-        $Three = DB::table('feedback')->where('status', 'Active')->where('star', '3')->where('barber_id', $id)->get();
-        $Two = DB::table('feedback')->where('status', 'Active')->where('star', '2')->where('barber_id', $id)->get();
-        $One = DB::table('feedback')->where('status', 'Active')->where('star', '1')->where('barber_id', $id)->get();
-        $Events = DB::table('events')->get();
+        $Five = Feedback::where('status', 'Active')->where('star', '5')->where('barber_id', $id)->get();
+        $Four = Feedback::where('status', 'Active')->where('star', '4')->where('barber_id', $id)->get();
+        $Three = Feedback::where('status', 'Active')->where('star', '3')->where('barber_id', $id)->get();
+        $Two = Feedback::where('status', 'Active')->where('star', '2')->where('barber_id', $id)->get();
+        $One = Feedback::where('status', 'Active')->where('star', '1')->where('barber_id', $id)->get();
+        $Events = Event::get();
 
-        $ActiveRes = DB::table('events')->where('user_id', Auth::user()->id)->where('finished', 'falce')->orderBy('start', 'DESC')->get();
-        $Reservss = DB::table('events')->where('user_id', Auth::user()->id)->where('finished', 'true')->orderBy('start', 'DESC')->get();
-        $MyActiveEvents = DB::table('events')->where('barber_id', Auth::user()->id)->where('finished', 'falce')->orderBy('start', 'DESC')->get();
+        $ActiveRes = Event::where('user_id', Auth::user()->id)->where('finished', 'falce')->orderBy('start', 'DESC')->get();
+        $Reservss = Event::where('user_id', Auth::user()->id)->where('finished', 'true')->orderBy('start', 'DESC')->get();
+        $MyActiveEvents = Event::where('barber_id', Auth::user()->id)->where('finished', 'falce')->orderBy('start', 'DESC')->get();
 
         $CountActiveRes = count($ActiveRes);
         $CountReservs = count($Reservss);
@@ -77,7 +79,7 @@ class AdminPanelController extends Controller
         $Users = User::orderBy('id', 'DESC')->get();
         $Usersall = count($Users);
 
-        $Staffs = DB::table('users')->where('sal_id', '!=', null)->get();
+        $Staffs = User::where('sal_id', '!=', null)->get();
         $Staffsall = count($Staffs);
 
         $Categories = Category::orderBy('id', 'DESC')->get();

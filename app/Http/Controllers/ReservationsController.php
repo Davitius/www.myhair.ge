@@ -12,9 +12,9 @@ class ReservationsController extends Controller
     public function index()
     {
 
-        $ActiveRes = DB::table('events')->where('user_id', Auth::user()->id)->where('finished', 'falce')->orderBy('start', 'ASC')->paginate(10);
-        $Reservs = DB::table('events')->where('user_id', Auth::user()->id)->where('finished', 'true')->orderBy('updated_at', 'DESC')->paginate(10);
-        $Reservss = DB::table('events')->where('user_id', Auth::user()->id)->where('finished', 'true')->orderBy('start', 'DESC')->get();
+        $ActiveRes = Event::where('user_id', Auth::user()->id)->where('finished', 'falce')->orderBy('start', 'ASC')->get();
+        $Reservs = Event::where('user_id', Auth::user()->id)->where('finished', 'true')->orderBy('updated_at', 'DESC')->paginate(10);
+        $Reservss = Event::where('user_id', Auth::user()->id)->where('finished', 'true')->orderBy('start', 'DESC')->get();
 
         $CountActiveRes = count($ActiveRes);
         $CountReservs = count($Reservss);

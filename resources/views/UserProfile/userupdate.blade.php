@@ -7,14 +7,8 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
+                <div class="col-sm-6 mx-auto text-center">
                     <h1 class="m-0">პირადი ინფორმაციის განახლება</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{route('UserProfile')}}">პროფილი</a></li>
-                        <li class="breadcrumb-item active">პირადი ინფორმაციის განახლება</li>
-                    </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -30,7 +24,7 @@
         <!-- Left col -->
         <section class="col-lg-6 connectedSortable mx-auto">
 
-            <div class="card card-primary">
+            <div class="card card-info">
                 <div class="card-header">
                     <h3 class="card-title">პირადი ინფორმაცია</h3>
                 </div>
@@ -67,8 +61,8 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                 </div>
-                                <input type="phone" class="form-control" name="phone" id="phone"
-                                       value="@if($guest->phone == '') {{old('phone')}} @else {{$guest->phone}} @endif">
+                                <input type="phone" class="form-control" name="phone" id="phone" maxlength="9"
+                                       value="@if($guest->phone == ''){{old('phone')}}@else{{$guest->phone}}@endif">
                             </div>
                             <!-- /.input group -->
                         </div>
@@ -78,7 +72,7 @@
                     <div class="card-footer">
                         <button type="submit"
                                 onclick="return confirm('ნამდვილად გნებავს პირადი ინფორმაციის განახლება?')"
-                                class="btn btn-outline-primary">განახლება
+                                class="btn btn-outline-info">განახლება
                         </button>
                     </div>
                 </form>

@@ -32,21 +32,10 @@ class StatusController extends Controller
         $data = request()->validate([
             'access' => 'string'
         ]);
-
         if (request()->input('access') != 'Manager') {
-            $salon = DB::table('salons')->where('user_id', Auth::user()->id)->first();
-            if (isset($salon)) {
-                $salonarry = Salon::find($salon->id);
-                $AvatarFileName = $salon->photo;
-                if (Storage::disk('public')->exists($AvatarFileName)) {
-                    Storage::disk('public')->delete($AvatarFileName);
-                }
-                $salonarry->delete();
-                $data['sal_id'] = null;
-                $data['staffstatus'] = null;
-            }
+        //            salonDelete($ownerId)
+            $this->salonDelete(Auth::user()->id);
         }
-
         $user->update($data);
 
         return redirect()->route('Job');

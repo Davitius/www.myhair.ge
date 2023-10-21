@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Job\Events;
 
 use App\Http\Controllers\Controller;
+use App\Models\Event;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,15 +22,15 @@ class ManagerEventsController extends Controller
                 $barberId = $tanamshId;
             }
 
-            $ActiveRes = DB::table('events')->where('barber_id', $barberId)->where('finished', 'falce')->orderBy('start', 'ASC')->paginate(10);
-            $Reservs = DB::table('events')->where('barber_id', $barberId)->where('finished', 'true')->orderBy('updated_at', 'DESC')->paginate(10);
-            $Reservss = DB::table('events')->where('barber_id', $barberId)->where('finished', 'true')->orderBy('start', 'DESC')->get();
-            $personals = DB::table('users')->where('sal_id', Auth::user()->sal_id)->get();
+            $ActiveRes = Event::where('barber_id', $barberId)->where('finished', 'falce')->orderBy('start', 'ASC')->paginate(10);
+            $Reservs = Event::where('barber_id', $barberId)->where('finished', 'true')->orderBy('updated_at', 'DESC')->paginate(10);
+            $Reservss = Event::where('barber_id', $barberId)->where('finished', 'true')->orderBy('start', 'DESC')->get();
+            $personals = User::where('sal_id', Auth::user()->sal_id)->get();
             $personal = User::find($barberId);
             $CountActiveRes = count($ActiveRes);
             $CountReservs = count($Reservss);
 
-            $job = DB::table('events')->where('barber_id', $barberId)->where('status', 'done')->get();
+            $job = Event::where('barber_id', $barberId)->where('status', 'done')->get();
 
             $Data = ['ActiveRes' => $ActiveRes, 'Reservs' => $Reservs, 'CountActiveRes' => $CountActiveRes, 'CountReservs' => $CountReservs, 'personals' => $personals];
 
@@ -51,15 +52,15 @@ class ManagerEventsController extends Controller
                 }
 
 
-                $ActiveRes = DB::table('events')->where('barber_id', $barberId)->where('finished', 'falce')->orderBy('start', 'ASC')->paginate(10);
-                $Reservs = DB::table('events')->where('barber_id', $barberId)->where('finished', 'true')->orderBy('updated_at', 'DESC')->paginate(10);
-                $Reservss = DB::table('events')->where('barber_id', $barberId)->where('finished', 'true')->orderBy('start', 'DESC')->get();
-                $personals = DB::table('users')->where('sal_id', Auth::user()->sal_id)->get();
+                $ActiveRes = Event::where('barber_id', $barberId)->where('finished', 'falce')->orderBy('start', 'ASC')->paginate(10);
+                $Reservs = Event::where('barber_id', $barberId)->where('finished', 'true')->orderBy('updated_at', 'DESC')->paginate(10);
+                $Reservss = Event::where('barber_id', $barberId)->where('finished', 'true')->orderBy('start', 'DESC')->get();
+                $personals = User::where('sal_id', Auth::user()->sal_id)->get();
                 $personal = User::find($barberId);
                 $CountActiveRes = count($ActiveRes);
                 $CountReservs = count($Reservss);
 
-                $job = DB::table('events')->where('barber_id', $barberId)->where('status', 'done')->get();
+                $job = Event::where('barber_id', $barberId)->where('status', 'done')->get();
 
                 $Data = ['ActiveRes' => $ActiveRes, 'Reservs' => $Reservs, 'CountActiveRes' => $CountActiveRes, 'CountReservs' => $CountReservs, 'personals' => $personals];
 

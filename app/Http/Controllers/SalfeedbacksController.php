@@ -20,11 +20,11 @@ class SalfeedbacksController extends Controller
         $data['user_id'] = $request->input('user_id');
         Salfeedback::Create($data);
 
-        $Five = DB::table('salfeedbacks')->where('status', 'Active')->where('star', '5')->where('sal_id', $id)->get();
-        $Four = DB::table('salfeedbacks')->where('status', 'Active')->where('star', '4')->where('sal_id', $id)->get();
-        $Three = DB::table('salfeedbacks')->where('status', 'Active')->where('star', '3')->where('sal_id', $id)->get();
-        $Two = DB::table('salfeedbacks')->where('status', 'Active')->where('star', '2')->where('sal_id', $id)->get();
-        $One = DB::table('salfeedbacks')->where('status', 'Active')->where('star', '1')->where('sal_id', $id)->get();
+        $Five = Salfeedback::where('status', 'Active')->where('star', '5')->where('sal_id', $id)->get();
+        $Four = Salfeedback::where('status', 'Active')->where('star', '4')->where('sal_id', $id)->get();
+        $Three = Salfeedback::where('status', 'Active')->where('star', '3')->where('sal_id', $id)->get();
+        $Two = Salfeedback::where('status', 'Active')->where('star', '2')->where('sal_id', $id)->get();
+        $One = Salfeedback::where('status', 'Active')->where('star', '1')->where('sal_id', $id)->get();
 
         $Fives = count($Five);
         $Fours = count($Four);
